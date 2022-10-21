@@ -33,6 +33,12 @@ fn take_two(two: Two) -> String {
     two.a
 }
 
+
+#[uniffi::export]
+async fn async_make_one(inner: i32) -> One {
+    One { inner }
+}
+
 #[uniffi::export]
 fn make_object() -> Arc<Object> {
     Arc::new(Object)

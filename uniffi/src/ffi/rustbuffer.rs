@@ -181,6 +181,8 @@ impl RustBuffer {
     }
 }
 
+unsafe impl Send for RustBuffer { }
+
 impl Default for RustBuffer {
     fn default() -> Self {
         Self::new()

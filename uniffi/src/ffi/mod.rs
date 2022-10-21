@@ -7,9 +7,11 @@ pub mod foreignbytes;
 pub mod foreigncallbacks;
 pub mod rustbuffer;
 pub mod rustcalls;
+pub mod ffifuture;
 
 use ffidefault::FfiDefault;
 pub use foreignbytes::*;
 pub use foreigncallbacks::*;
 pub use rustbuffer::*;
 pub use rustcalls::*;
+pub use ffifuture::*;
