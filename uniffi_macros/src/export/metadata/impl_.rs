@@ -78,6 +78,7 @@ fn method_metadata(
         module_path: mod_path.to_owned(),
         self_name: self_name.to_owned(),
         name: f.sig.ident.to_string(),
+        is_async: false,
         inputs: fn_param_metadata(&f.sig.inputs)?,
         return_type: return_type_metadata(&f.sig.output)?,
     })

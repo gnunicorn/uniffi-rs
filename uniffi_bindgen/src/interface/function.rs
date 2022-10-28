@@ -58,6 +58,7 @@ pub struct Function {
     pub(super) return_type: Option<Type>,
     pub(super) ffi_func: FFIFunction,
     pub(super) attributes: FunctionAttributes,
+    pub(super) is_async: bool,
 }
 
 impl Function {
@@ -75,6 +76,10 @@ impl Function {
 
     pub fn return_type(&self) -> Option<&Type> {
         self.return_type.as_ref()
+    }
+
+    pub fn is_async(&self) -> bool {
+        self.is_async
     }
 
     pub fn ffi_func(&self) -> &FFIFunction {
@@ -137,6 +142,7 @@ impl From<uniffi_meta::FnMetadata> for Function {
             arguments,
             return_type,
             ffi_func,
+            is_async: meta.is_async,
             attributes: Default::default(),
         }
     }
@@ -175,6 +181,7 @@ impl APIConverter<Function> for weedle::namespace::OperationNamespaceMember<'_> 
                 Some(id) => id.0.to_string(),
             },
             return_type,
+            is_async: false,
             arguments: self.args.body.list.convert(ci)?,
             ffi_func: Default::default(),
             attributes: FunctionAttributes::try_from(self.attributes.as_ref())?,

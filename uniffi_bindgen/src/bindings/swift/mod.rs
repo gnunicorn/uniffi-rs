@@ -186,6 +186,8 @@ pub fn run_script(out_dir: &Utf8Path, script_file: &Utf8Path) -> Result<()> {
     }
     cmd.arg(script_file);
 
+    println!("running, {:?}", cmd);
+
     let status = cmd
         .spawn()
         .context("Failed to spawn `swift` when running script")?

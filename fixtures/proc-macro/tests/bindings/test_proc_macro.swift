@@ -12,3 +12,8 @@ assert(takeTwo(two: two) == "a")
 
 // just make sure this works / doesn't crash
 let three = Three(obj: makeObject())
+
+func trying_async_make_one() async {
+    let one = await asyncMakeOne(inner: 123).value
+    assert(one.inner == 123)
+}
